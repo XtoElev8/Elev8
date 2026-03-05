@@ -661,7 +661,7 @@
           <div class="contact-info-item">
             <div class="contact-icon">✉</div>
             <div class="contact-info-text">
-              <strong>contact@xto.is</strong>
+              <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="24474b4a50454750645c504b0a4d57">[email&#160;protected]</a></strong>
             </div>
           </div>
           <div class="contact-info-item">
@@ -673,27 +673,30 @@
         </div>
       </div>
       <div class="contact-right reveal">
-        <div class="contact-form-wrap">
+        <form class="contact-form-wrap" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="e316edac-8d40-433c-ac31-735195f2ca27"/>
+          <input type="hidden" name="subject" value="New enquiry from xto.is"/>
+          <input type="hidden" name="redirect" value="https://xto.is"/>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" data-i18n="form_firstname">First Name</label>
-              <input type="text" class="form-input" data-i18n-placeholder="form_firstname_ph" placeholder="Jean"/>
+              <input type="text" name="firstname" class="form-input" data-i18n-placeholder="form_firstname_ph" placeholder="Jean" required/>
             </div>
             <div class="form-group">
               <label class="form-label" data-i18n="form_lastname">Last Name</label>
-              <input type="text" class="form-input" data-i18n-placeholder="form_lastname_ph" placeholder="Dupont"/>
+              <input type="text" name="lastname" class="form-input" data-i18n-placeholder="form_lastname_ph" placeholder="Dupont" required/>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="form_email">Email</label>
-            <input type="email" class="form-input" placeholder="jean@example.com"/>
+            <input type="email" name="email" class="form-input" placeholder="jean@example.com" required/>
           </div>
           <div class="form-group">
             <label class="form-label" data-i18n="form_message">Message</label>
-            <textarea class="form-textarea" data-i18n-placeholder="form_message_ph" placeholder="Tell us about your sales challenges..."></textarea>
+            <textarea name="message" class="form-textarea" data-i18n-placeholder="form_message_ph" placeholder="Tell us about your sales challenges..." required></textarea>
           </div>
-          <button class="btn-submit" data-i18n="form_submit">Send Message →</button>
-        </div>
+          <button type="submit" class="btn-submit" data-i18n="form_submit">Send Message →</button>
+        </form>
       </div>
     </div>
   </div>
@@ -709,7 +712,7 @@
   </ul>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── TRANSLATIONS ──
 const translations = {
   en: {
@@ -859,13 +862,4 @@ if ('IntersectionObserver' in window) {
   els.forEach(el => io.observe(el));
 }
 
-// ── NAV SCROLL ──
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  nav.style.background = window.scrollY > 80
-    ? 'rgba(28,18,9,0.92)'
-    : 'rgba(28,18,9,0.45)';
-});
-</script>
-</body>
-</html>
+// ── NAV SCR
