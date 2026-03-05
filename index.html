@@ -482,6 +482,32 @@
       .about-img { height: 300px; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+    .lang-btn {
+      font-family: 'Exo 2', 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.3rem 0.55rem;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover { color: white; border-color: rgba(255,255,255,0.5); }
+    .lang-btn.active {
+      color: var(--dark-brown);
+      background: var(--orange);
+      border-color: var(--orange);
+    }
   </style>
 </head>
 <body>
@@ -490,11 +516,17 @@
 <nav>
   <div class="nav-logo">ELEV8</div>
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="#about" data-i18n="nav_about">About</a></li>
+    <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
   </ul>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('it')">IT</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -502,13 +534,13 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Sales Consulting · South of France</div>
-    <h1 class="hero-title">Elevate</h1>
-    <span class="hero-title-italic">your sales</span>
-    <p class="hero-body">We help ambitious businesses across the Mediterranean unlock extraordinary sales growth, so you can focus on your core business and we take care of sales.</p>
+    <div class="hero-eyebrow" data-i18n="hero_eyebrow">Sales Consulting · South of France</div>
+    <h1 class="hero-title" data-i18n="hero_title">Elevate</h1>
+    <span class="hero-title-italic" data-i18n="hero_subtitle">your sales</span>
+    <p class="hero-body" data-i18n="hero_body">We help ambitious businesses across the Mediterranean unlock extraordinary sales growth, so you can focus on your core business and we take care of sales.</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-orange">Book a consultation →</a>
-      <a href="#services" class="btn-outline">Our approach</a>
+      <a href="#contact" class="btn-orange" data-i18n="hero_cta1">Book a consultation →</a>
+      <a href="#services" class="btn-outline" data-i18n="hero_cta2">Our approach</a>
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
@@ -518,29 +550,29 @@
 <section class="services" id="services">
   <div class="container">
     <div class="reveal">
-      <div class="section-eyebrow">What We Do</div>
-      <h2 class="section-title">Expertise that <em>transforms</em></h2>
+      <div class="section-eyebrow" data-i18n="services_eyebrow">What We Do</div>
+      <h2 class="section-title" data-i18n="services_title">Expertise that <em data-i18n="services_title_em">transforms</em></h2>
     </div>
     <div class="services-grid reveal">
       <div class="service-card">
         <div class="service-icon">◎</div>
-        <div class="service-name">Sales Strategy</div>
-        <p class="service-desc">Custom go-to-market strategies tailored to Mediterranean markets and beyond. We design winning playbooks.</p>
+        <div class="service-name" data-i18n="s1_name">Sales Strategy</div>
+        <p class="service-desc" data-i18n="s1_desc">Custom go-to-market strategies tailored to Mediterranean markets and beyond. We design winning playbooks.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">👥</div>
-        <div class="service-name">Sales Outsourcing</div>
-        <p class="service-desc">Free yourself from the burden of hiring employees while benefiting from flawless sales execution and proven methodology that delivers results.</p>
+        <div class="service-name" data-i18n="s2_name">Sales Outsourcing</div>
+        <p class="service-desc" data-i18n="s2_desc">Free yourself from the burden of hiring employees while benefiting from flawless sales execution and proven methodology that delivers results.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">↗</div>
-        <div class="service-name">Revenue Growth</div>
-        <p class="service-desc">Pipeline optimization, deal acceleration, and conversion rate mastery to unlock exponential revenue gains.</p>
+        <div class="service-name" data-i18n="s3_name">Revenue Growth</div>
+        <p class="service-desc" data-i18n="s3_desc">Pipeline optimization, deal acceleration, and conversion rate mastery to unlock exponential revenue gains.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">💡</div>
-        <div class="service-name">Sales Innovation</div>
-        <p class="service-desc">Modern tools, AI-driven insights, and digital-first approaches to keep you ahead of the competition.</p>
+        <div class="service-name" data-i18n="s4_name">Sales Innovation</div>
+        <p class="service-desc" data-i18n="s4_desc">Modern tools, AI-driven insights, and digital-first approaches to keep you ahead of the competition.</p>
       </div>
     </div>
   </div>
@@ -557,22 +589,22 @@
         <div class="about-img-border"></div>
       </div>
       <div class="about-right reveal">
-        <div class="section-eyebrow">Our Philosophy</div>
-        <h2 class="section-title">Where ambition <em>meets the sun</em></h2>
-        <p class="about-body">Based on the stunning French Riviera, we bring a unique blend of European sophistication and results-driven pragmatism to every engagement. We bring sales experience having closed deals on four continents.</p>
-        <p class="about-body">We believe the best sales strategies are built where inspiration flows freely — under Mediterranean light, where boldness is a way of life.</p>
+        <div class="section-eyebrow" data-i18n="about_eyebrow">Our Philosophy</div>
+        <h2 class="section-title" data-i18n="about_title">Where ambition <em data-i18n="about_title_em">meets the sun</em></h2>
+        <p class="about-body" data-i18n="about_p1">Based on the stunning French Riviera, we bring a unique blend of European sophistication and results-driven pragmatism to every engagement. We bring sales experience having closed deals on four continents.</p>
+        <p class="about-body" data-i18n="about_p2">We believe the best sales strategies are built where inspiration flows freely — under Mediterranean light, where boldness is a way of life.</p>
         <div class="about-stats">
           <div>
             <span class="stat-num">20+</span>
-            <span class="stat-label">Years Experience</span>
+            <span class="stat-label" data-i18n="stat1">Years Experience</span>
           </div>
           <div>
             <span class="stat-num">€152B+</span>
-            <span class="stat-label">Total Addressable Market</span>
+            <span class="stat-label" data-i18n="stat2">Total Addressable Market</span>
           </div>
           <div>
             <span class="stat-num">5M</span>
-            <span class="stat-label">Population</span>
+            <span class="stat-label" data-i18n="stat3">Population</span>
           </div>
         </div>
       </div>
@@ -584,8 +616,8 @@
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="reveal">
-      <div class="section-eyebrow">Testimonials</div>
-      <h2 class="section-title">Trusted by <em>leaders</em></h2>
+      <div class="section-eyebrow" data-i18n="test_eyebrow">Testimonials</div>
+      <h2 class="section-title" data-i18n="test_title">Trusted by <em data-i18n="test_title_em">leaders</em></h2>
     </div>
     <div class="testimonials-grid reveal">
       <div class="testimonial-card">
@@ -615,9 +647,9 @@
   <div class="container">
     <div class="contact-grid">
       <div class="contact-left reveal">
-        <div class="section-eyebrow">Get in Touch</div>
-        <h2 class="section-title">Let's start your <em>transformation</em></h2>
-        <p class="contact-body">Ready to elevate your sales performance? Reach out for a complimentary assessment of how you can achieve higher sales with no additional headcount.</p>
+        <div class="section-eyebrow" data-i18n="contact_eyebrow">Get in Touch</div>
+        <h2 class="section-title" data-i18n="contact_title">Let's start your <em data-i18n="contact_title_em">transformation</em></h2>
+        <p class="contact-body" data-i18n="contact_body">Ready to elevate your sales performance? Reach out for a complimentary assessment of how you can achieve higher sales with no additional headcount.</p>
         <div class="contact-info">
           <div class="contact-info-item">
             <div class="contact-icon">📍</div>
@@ -629,7 +661,7 @@
           <div class="contact-info-item">
             <div class="contact-icon">✉</div>
             <div class="contact-info-text">
-              <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f99a96978d989a8db9949c8b909d909897d49a96978a8c958d90979ed79f8b">[email&#160;protected]</a></strong>
+              <strong>contact@xto.is</strong>
             </div>
           </div>
           <div class="contact-info-item">
@@ -644,23 +676,23 @@
         <div class="contact-form-wrap">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">First Name</label>
-              <input type="text" class="form-input" placeholder="Jean"/>
+              <label class="form-label" data-i18n="form_firstname">First Name</label>
+              <input type="text" class="form-input" data-i18n-placeholder="form_firstname_ph" placeholder="Jean"/>
             </div>
             <div class="form-group">
-              <label class="form-label">Last Name</label>
-              <input type="text" class="form-input" placeholder="Dupont"/>
+              <label class="form-label" data-i18n="form_lastname">Last Name</label>
+              <input type="text" class="form-input" data-i18n-placeholder="form_lastname_ph" placeholder="Dupont"/>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label">Email</label>
+            <label class="form-label" data-i18n="form_email">Email</label>
             <input type="email" class="form-input" placeholder="jean@example.com"/>
           </div>
           <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Tell us about your sales challenges..."></textarea>
+            <label class="form-label" data-i18n="form_message">Message</label>
+            <textarea class="form-textarea" data-i18n-placeholder="form_message_ph" placeholder="Tell us about your sales challenges..."></textarea>
           </div>
-          <button class="btn-submit">Send Message →</button>
+          <button class="btn-submit" data-i18n="form_submit">Send Message →</button>
         </div>
       </div>
     </div>
@@ -670,33 +702,170 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">ELEV8</div>
-  <p class="footer-copy">© 2026 ELEV8. All rights reserved.</p>
+  <p class="footer-copy" data-i18n="footer_copy">© 2026 ELEV8. All rights reserved.</p>
   <ul class="footer-links">
-    <li><a href="#">Privacy</a></li>
-    <li><a href="#">Terms</a></li>
+    <li><a href="#" data-i18n="footer_privacy">Privacy</a></li>
+    <li><a href="#" data-i18n="footer_terms">Terms</a></li>
   </ul>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Scroll reveal
-  // Scroll reveal
-  const els = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    els.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(28px)';
-    });
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    els.forEach(el => io.observe(el));
+<script>
+// ── TRANSLATIONS ──
+const translations = {
+  en: {
+    nav_services: "Services", nav_about: "About", nav_testimonials: "Testimonials", nav_contact: "Contact",
+    hero_eyebrow: "Sales Consulting · South of France",
+    hero_title: "Elevate", hero_subtitle: "your sales",
+    hero_body: "We help ambitious businesses across the Mediterranean unlock extraordinary sales growth, so you can focus on your core business and we take care of sales.",
+    hero_cta1: "Book a consultation →", hero_cta2: "Our approach",
+    services_eyebrow: "What We Do", services_title: "Expertise that ", services_title_em: "transforms",
+    s1_name: "Sales Strategy", s1_desc: "Custom go-to-market strategies tailored to Mediterranean markets and beyond. We design winning playbooks.",
+    s2_name: "Sales Outsourcing", s2_desc: "Free yourself from the burden of hiring employees while benefiting from flawless sales execution and proven methodology that delivers results.",
+    s3_name: "Revenue Growth", s3_desc: "Pipeline optimization, deal acceleration, and conversion rate mastery to unlock exponential revenue gains.",
+    s4_name: "Sales Innovation", s4_desc: "Modern tools, AI-driven insights, and digital-first approaches to keep you ahead of the competition.",
+    about_eyebrow: "Our Philosophy", about_title: "Where ambition ", about_title_em: "meets the sun",
+    about_p1: "Based on the stunning French Riviera, we bring a unique blend of European sophistication and results-driven pragmatism to every engagement. We bring sales experience having closed deals on four continents.",
+    about_p2: "We believe the best sales strategies are built where inspiration flows freely — under Mediterranean light, where boldness is a way of life.",
+    stat1: "Years Experience", stat2: "Total Addressable Market", stat3: "Population",
+    test_eyebrow: "Testimonials", test_title: "Trusted by ", test_title_em: "leaders",
+    contact_eyebrow: "Get in Touch", contact_title: "Let's start your ", contact_title_em: "transformation",
+    contact_body: "Ready to elevate your sales performance? Reach out for a complimentary assessment of how you can achieve higher sales with no additional headcount.",
+    form_firstname: "First Name", form_firstname_ph: "Jean", form_lastname: "Last Name", form_lastname_ph: "Dupont",
+    form_email: "Email", form_message: "Message", form_message_ph: "Tell us about your sales challenges...", form_submit: "Send Message →",
+    footer_copy: "© 2026 ELEV8. All rights reserved.", footer_privacy: "Privacy", footer_terms: "Terms"
+  },
+  fr: {
+    nav_services: "Services", nav_about: "À propos", nav_testimonials: "Témoignages", nav_contact: "Contact",
+    hero_eyebrow: "Conseil en ventes · Sud de la France",
+    hero_title: "Élevez", hero_subtitle: "vos ventes",
+    hero_body: "Nous aidons les entreprises ambitieuses de la Méditerranée à débloquer une croissance commerciale extraordinaire, pour que vous puissiez vous concentrer sur votre cœur de métier pendant que nous gérons les ventes.",
+    hero_cta1: "Réserver une consultation →", hero_cta2: "Notre approche",
+    services_eyebrow: "Ce que nous faisons", services_title: "Une expertise qui ", services_title_em: "transforme",
+    s1_name: "Stratégie commerciale", s1_desc: "Des stratégies go-to-market sur mesure, adaptées aux marchés méditerranéens et au-delà. Nous concevons des playbooks gagnants.",
+    s2_name: "Externalisation des ventes", s2_desc: "Libérez-vous du fardeau du recrutement tout en bénéficiant d'une exécution commerciale irréprochable et d'une méthodologie éprouvée.",
+    s3_name: "Croissance du chiffre d'affaires", s3_desc: "Optimisation du pipeline, accélération des deals et maîtrise du taux de conversion pour des gains de revenus exponentiels.",
+    s4_name: "Innovation commerciale", s4_desc: "Outils modernes, insights IA et approches digitales pour rester en avance sur la concurrence.",
+    about_eyebrow: "Notre philosophie", about_title: "Là où l'ambition ", about_title_em: "rencontre le soleil",
+    about_p1: "Basés sur la magnifique Côte d'Azur, nous apportons un mélange unique de sophistication européenne et de pragmatisme orienté résultats. Nous avons conclu des affaires sur quatre continents.",
+    about_p2: "Nous croyons que les meilleures stratégies de vente naissent là où l'inspiration coule librement — sous la lumière méditerranéenne, où l'audace est un art de vivre.",
+    stat1: "Années d'expérience", stat2: "Marché adressable total", stat3: "Population",
+    test_eyebrow: "Témoignages", test_title: "La confiance des ", test_title_em: "leaders",
+    contact_eyebrow: "Contactez-nous", contact_title: "Commençons votre ", contact_title_em: "transformation",
+    contact_body: "Prêt à élever vos performances commerciales ? Contactez-nous pour une évaluation gratuite de la façon dont vous pouvez augmenter vos ventes sans recrutement supplémentaire.",
+    form_firstname: "Prénom", form_firstname_ph: "Jean", form_lastname: "Nom", form_lastname_ph: "Dupont",
+    form_email: "Email", form_message: "Message", form_message_ph: "Parlez-nous de vos défis commerciaux...", form_submit: "Envoyer →",
+    footer_copy: "© 2026 ELEV8. Tous droits réservés.", footer_privacy: "Confidentialité", footer_terms: "Conditions"
+  },
+  it: {
+    nav_services: "Servizi", nav_about: "Chi siamo", nav_testimonials: "Testimonianze", nav_contact: "Contatti",
+    hero_eyebrow: "Consulenza Commerciale · Sud della Francia",
+    hero_title: "Eleva", hero_subtitle: "le tue vendite",
+    hero_body: "Aiutiamo le aziende ambiziose del Mediterraneo a sbloccare una crescita straordinaria delle vendite, così puoi concentrarti sul tuo core business mentre noi ci occupiamo delle vendite.",
+    hero_cta1: "Prenota una consulenza →", hero_cta2: "Il nostro approccio",
+    services_eyebrow: "Cosa facciamo", services_title: "Competenze che ", services_title_em: "trasformano",
+    s1_name: "Strategia di vendita", s1_desc: "Strategie go-to-market personalizzate per i mercati mediterranei e oltre. Progettiamo playbook vincenti.",
+    s2_name: "Outsourcing delle vendite", s2_desc: "Liberati dall'onere delle assunzioni beneficiando di un'esecuzione commerciale impeccabile e di una metodologia comprovata.",
+    s3_name: "Crescita dei ricavi", s3_desc: "Ottimizzazione della pipeline, accelerazione dei deal e padronanza del tasso di conversione per guadagni di fatturato esponenziali.",
+    s4_name: "Innovazione commerciale", s4_desc: "Strumenti moderni, insight basati sull'IA e approcci digital-first per restare sempre avanti alla concorrenza.",
+    about_eyebrow: "La nostra filosofia", about_title: "Dove l'ambizione ", about_title_em: "incontra il sole",
+    about_p1: "Basati sulla splendida Costa Azzurra, portiamo un mix unico di sofisticazione europea e pragmatismo orientato ai risultati. Abbiamo chiuso trattative su quattro continenti.",
+    about_p2: "Crediamo che le migliori strategie di vendita nascano dove l'ispirazione scorre liberamente — sotto la luce mediterranea, dove l'audacia è uno stile di vita.",
+    stat1: "Anni di esperienza", stat2: "Mercato totale indirizzabile", stat3: "Popolazione",
+    test_eyebrow: "Testimonianze", test_title: "La fiducia dei ", test_title_em: "leader",
+    contact_eyebrow: "Contattaci", contact_title: "Iniziamo la tua ", contact_title_em: "trasformazione",
+    contact_body: "Pronto a elevare le tue performance di vendita? Contattaci per una valutazione gratuita su come aumentare le vendite senza assumere personale aggiuntivo.",
+    form_firstname: "Nome", form_firstname_ph: "Marco", form_lastname: "Cognome", form_lastname_ph: "Rossi",
+    form_email: "Email", form_message: "Messaggio", form_message_ph: "Raccontaci le tue sfide commerciali...", form_submit: "Invia messaggio →",
+    footer_copy: "© 2026 ELEV8. Tutti i diritti riservati.", footer_privacy: "Privacy", footer_terms: "Termini"
+  },
+  es: {
+    nav_services: "Servicios", nav_about: "Sobre nosotros", nav_testimonials: "Testimonios", nav_contact: "Contacto",
+    hero_eyebrow: "Consultoría de Ventas · Sur de Francia",
+    hero_title: "Eleva", hero_subtitle: "tus ventas",
+    hero_body: "Ayudamos a empresas ambiciosas del Mediterráneo a desbloquear un crecimiento extraordinario en ventas, para que puedas centrarte en tu negocio principal mientras nosotros nos ocupamos de las ventas.",
+    hero_cta1: "Reservar una consulta →", hero_cta2: "Nuestro enfoque",
+    services_eyebrow: "Lo que hacemos", services_title: "Experiencia que ", services_title_em: "transforma",
+    s1_name: "Estrategia de ventas", s1_desc: "Estrategias go-to-market personalizadas para los mercados mediterráneos y más allá. Diseñamos playbooks ganadores.",
+    s2_name: "Externalización de ventas", s2_desc: "Libérate de la carga de contratar empleados mientras te beneficias de una ejecución comercial impecable y una metodología probada.",
+    s3_name: "Crecimiento de ingresos", s3_desc: "Optimización del pipeline, aceleración de acuerdos y dominio de la tasa de conversión para ganancias de ingresos exponenciales.",
+    s4_name: "Innovación comercial", s4_desc: "Herramientas modernas, insights basados en IA y enfoques digitales para mantenerte por delante de la competencia.",
+    about_eyebrow: "Nuestra filosofía", about_title: "Donde la ambición ", about_title_em: "se encuentra con el sol",
+    about_p1: "Ubicados en la impresionante Costa Azul, aportamos una combinación única de sofisticación europea y pragmatismo orientado a resultados. Hemos cerrado acuerdos en cuatro continentes.",
+    about_p2: "Creemos que las mejores estrategias de ventas se construyen donde la inspiración fluye libremente — bajo la luz mediterránea, donde la audacia es un estilo de vida.",
+    stat1: "Años de experiencia", stat2: "Mercado total direccionable", stat3: "Población",
+    test_eyebrow: "Testimonios", test_title: "La confianza de los ", test_title_em: "líderes",
+    contact_eyebrow: "Contáctanos", contact_title: "Comencemos tu ", contact_title_em: "transformación",
+    contact_body: "¿Listo para elevar tu rendimiento de ventas? Contáctanos para una evaluación gratuita de cómo puedes lograr mayores ventas sin incorporar personal adicional.",
+    form_firstname: "Nombre", form_firstname_ph: "Juan", form_lastname: "Apellido", form_lastname_ph: "García",
+    form_email: "Email", form_message: "Mensaje", form_message_ph: "Cuéntanos sobre tus desafíos de ventas...", form_submit: "Enviar mensaje →",
+    footer_copy: "© 2026 ELEV8. Todos los derechos reservados.", footer_privacy: "Privacidad", footer_terms: "Términos"
   }
+};
 
-  // Nav transparency on scroll
-  const nav = document.querySele
+// ── LANGUAGE SWITCHER ──
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      // For elements that are direct text (not containing child elements)
+      if (el.children.length === 0) {
+        el.textContent = t[key];
+      } else {
+        // For elements with em children (titles), update only text node
+        el.childNodes.forEach(node => {
+          if (node.nodeType === 3) node.textContent = t[key];
+        });
+      }
+    }
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key]) el.placeholder = t[key];
+  });
+
+  // Update active button
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+}
+
+// ── SCROLL REVEAL ──
+const els = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  els.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        e.target.style.transition = 'opacity 0.65s ease, transform 0.65s ease';
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(el => io.observe(el));
+}
+
+// ── NAV SCROLL ──
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 80
+    ? 'rgba(28,18,9,0.92)'
+    : 'rgba(28,18,9,0.45)';
+});
+</script>
+</body>
+</html>
